@@ -60,8 +60,8 @@ And next calculate the correlation between `x` and `y` in this dataset:
 star_data %>%
   summarize(r = cor(x, y))
 ```
-### **Comparison with the "dino" dataset**
-There is not much difference in the **correlation** (values both close to **0**) of the two data sets, however the shapes are drastically different.
+### **Comparison of "Star" dataset with "Dino" data set:**
+There is not much difference in the **correlation** value (both close to **0**) of the two data sets, however the shapes are drastically different.
 
 - The `"dino"` dataset forms a **dinosaur shape**.
 - The `"star"` dataset forms a **star shape**.
@@ -70,17 +70,25 @@ This highlights the importance of **visualizing data** rather than relying only 
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+First let's plot the data in the circle dataset:
 
-```{r}
-
-
+```{r plot-circle, fig.height=3, fig.width=6}
+circle_data <- datasaurus_dozen %>% 
+  filter(dataset == "circle")
+ggplot(data = circle_data, aes(x = x, y = y)) +
+  geom_point()
 ```
 
-```{r}
-
-
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x, y))
 ```
+### **Comparison of "Circle" dataset with the "Dino" dataset:**
+As observed earlier, the correlation values for both datasets are close to 0, indicating little to no linear relationship. However, their shapes are drastically different:
+- The "dino" dataset forms a **dinosaur shape**.
+- The "circle" dataset forms a **circular pattern**, which inherently has no linear trend.
+
+This reinforces the importance of **visualizing data** rather than relying solely on correlation coefficients, as different distributions can have the same summary statistics.
 
 ### Exercise 5
 
