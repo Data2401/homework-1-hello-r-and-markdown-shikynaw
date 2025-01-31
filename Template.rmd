@@ -1,6 +1,6 @@
 ---
 title: "Hello R"
-author: "Your Name Goes Here"
+author: "Shikyna William"
 date: "Data 2401"
 output: html_document
 ---
@@ -31,35 +31,42 @@ First let's plot the data in the dino dataset:
 
 ```{r plot-dino, fig.height=3, fig.width=6}
 dino_data <- datasaurus_dozen %>% 
-  filter(dataset == "dino") #piping datasaurus_dozen into the filter function to filter for observations
-ggplot(data = dino_data, mapping = aes(x = x, y = y)) + #visualizing
+  filter(dataset == "dino") 
+ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
 And next calculate the correlation between `x` and `y` in this dataset:
 
 ```{r cor-dino}
-dino_data %>% #corr between x & y
+dino_data %>%
   summarize(r = cor(x, y))
 ```
 
 ### Exercise 3
 
-(Add code and narrative as needed. Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient. To finish, remember to clean up the narrative by removing these instructions.)
+First let's plot the data in the star dataset:
 
-
-
-```{r plot-star}
-
-
+```{r plot-star, fig.height=3, fig.width=6}
+star_data <- datasaurus_dozen %>% 
+  filter(dataset == "star")
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-I'm some text, you should replace me with more meaningful text...
+And next calculate the correlation between `x` and `y` in this dataset:
  
 ```{r cor-star}
-
-
+star_data %>%
+  summarize(r = cor(x, y))
 ```
+### **Comparison with the "dino" dataset**
+There is not much difference in the **correlation** (values both close to **0**) of the two data sets, however the shapes are drastically different.
+
+- The `"dino"` dataset forms a **dinosaur shape**.
+- The `"star"` dataset forms a **star shape**.
+
+This highlights the importance of **visualizing data** rather than relying only on correlation coefficients.
 
 ### Exercise 4
 
